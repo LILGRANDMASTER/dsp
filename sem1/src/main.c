@@ -1,5 +1,6 @@
 #include "delta.h"
 #include "unit_step.h"
+#include "normal_distribution.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -63,7 +64,19 @@ int main(void)
   fclose(plot2);
   fclose(plot3);
   fclose(plot4);
+  
+  /* Задание 4 - создание зашумленного сигнала */
+  FILE* plot5 = fopen("data/plot5.txt", "wb");
+  float x;
 
+  for(float t = 0; t < 5; t+=0.01)
+  {
+    x = sin(2*pi * 0.5 * t);
+    x += normal_distribution(0, sqrt(0.05));
+    fprintf(plot5, "%f %f\n", t, x);
+  }
+
+  fclose(plot5);
   return 0;
 }
 

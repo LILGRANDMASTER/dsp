@@ -30,3 +30,6 @@ plot_delta:
 
 plot_harmonic:
 	gnuplot ./gp_scripts/harmonic.gp
+
+plot_noize:
+	gnuplot ./gp_scripts/rand.gp
